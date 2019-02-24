@@ -2,7 +2,7 @@
 
 namespace ninetyFourPercent
 {
-    class GameContext : DbContext
+    public class GameContext : DbContext
     {
         #region Constructor
 
@@ -16,9 +16,9 @@ namespace ninetyFourPercent
 
         #endregion
 
-        public DbSet<Trade> Trades { get; set; }
-        public DbSet<Department> Departments { get; set; }
-        public DbSet<Reader> Readers { get; set; }
-        public DbSet<Book> Books { get; set; }
+        public DbSet<PlayerProgress> PlayersProgresses { get; set; }
+        public DbSet<Word> Words { get; set; }
+        public DbSet<Level> Levels { get; set; }
+        public DbSet<Player> Players { get; set; }
     }
 }
