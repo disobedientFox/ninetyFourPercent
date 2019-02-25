@@ -33,6 +33,7 @@
             this.passwordConfirm_tbox = new System.Windows.Forms.TextBox();
             this.register_btn = new System.Windows.Forms.Button();
             this.login_label = new System.Windows.Forms.Label();
+            this.top_panel = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // login_tbox
@@ -76,11 +77,19 @@
             this.login_label.Text = "label1";
             this.login_label.Click += new System.EventHandler(this.login_label_Click);
             // 
+            // top_panel
+            // 
+            this.top_panel.Location = new System.Drawing.Point(0, 0);
+            this.top_panel.Name = "top_panel";
+            this.top_panel.Size = new System.Drawing.Size(700, 30);
+            this.top_panel.TabIndex = 5;
+            // 
             // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(700, 500);
+            this.Controls.Add(this.top_panel);
             this.Controls.Add(this.login_label);
             this.Controls.Add(this.register_btn);
             this.Controls.Add(this.passwordConfirm_tbox);
@@ -102,5 +111,6 @@
         private System.Windows.Forms.TextBox passwordConfirm_tbox;
         private System.Windows.Forms.Button register_btn;
         private System.Windows.Forms.Label login_label;
+        private System.Windows.Forms.Panel top_panel;
     }
 }

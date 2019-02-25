@@ -50,5 +50,15 @@ namespace ninetyFourPercent
             registerForm.Show();
             Hide();
         }
+
+        private void close_panel_MouseClick(object sender, MouseEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void minimize_panel_MouseClick(object sender, MouseEventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
     }
 }
