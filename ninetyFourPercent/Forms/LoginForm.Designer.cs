@@ -30,10 +30,10 @@
         {
             this.top_panel = new System.Windows.Forms.Panel();
             this.start_panel = new System.Windows.Forms.Panel();
-            this.login_tbox = new System.Windows.Forms.TextBox();
-            this.password_tbox = new System.Windows.Forms.TextBox();
-            this.login_btn = new System.Windows.Forms.Button();
             this.create_acc_label = new System.Windows.Forms.Label();
+            this.login_btn = new System.Windows.Forms.Button();
+            this.password_tbox = new System.Windows.Forms.TextBox();
+            this.login_tbox = new System.Windows.Forms.TextBox();
             this.start_panel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,19 +57,15 @@
             this.start_panel.Size = new System.Drawing.Size(700, 500);
             this.start_panel.TabIndex = 1;
             // 
-            // login_tbox
+            // create_acc_label
             // 
-            this.login_tbox.Location = new System.Drawing.Point(279, 153);
-            this.login_tbox.Name = "login_tbox";
-            this.login_tbox.Size = new System.Drawing.Size(100, 20);
-            this.login_tbox.TabIndex = 0;
-            // 
-            // password_tbox
-            // 
-            this.password_tbox.Location = new System.Drawing.Point(279, 180);
-            this.password_tbox.Name = "password_tbox";
-            this.password_tbox.Size = new System.Drawing.Size(100, 20);
-            this.password_tbox.TabIndex = 1;
+            this.create_acc_label.AutoSize = true;
+            this.create_acc_label.Location = new System.Drawing.Point(279, 273);
+            this.create_acc_label.Name = "create_acc_label";
+            this.create_acc_label.Size = new System.Drawing.Size(35, 13);
+            this.create_acc_label.TabIndex = 3;
+            this.create_acc_label.Text = "label1";
+            this.create_acc_label.Click += new System.EventHandler(this.create_acc_label_Click);
             // 
             // login_btn
             // 
@@ -81,16 +77,21 @@
             this.login_btn.UseVisualStyleBackColor = true;
             this.login_btn.Click += new System.EventHandler(this.login_btn_Click);
             // 
-            // create_acc_label
+            // password_tbox
             // 
-            this.create_acc_label.AutoSize = true;
-            this.create_acc_label.Location = new System.Drawing.Point(279, 273);
-            this.create_acc_label.Name = "create_acc_label";
-            this.create_acc_label.Size = new System.Drawing.Size(35, 13);
-            this.create_acc_label.TabIndex = 3;
-            this.create_acc_label.Text = "label1";
+            this.password_tbox.Location = new System.Drawing.Point(279, 180);
+            this.password_tbox.Name = "password_tbox";
+            this.password_tbox.Size = new System.Drawing.Size(100, 20);
+            this.password_tbox.TabIndex = 1;
             // 
-            // MainForm
+            // login_tbox
+            // 
+            this.login_tbox.Location = new System.Drawing.Point(279, 153);
+            this.login_tbox.Name = "login_tbox";
+            this.login_tbox.Size = new System.Drawing.Size(100, 20);
+            this.login_tbox.TabIndex = 0;
+            // 
+            // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -98,7 +99,7 @@
             this.Controls.Add(this.top_panel);
             this.Controls.Add(this.start_panel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "MainForm";
+            this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.start_panel.ResumeLayout(false);

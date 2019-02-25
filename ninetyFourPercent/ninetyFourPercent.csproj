@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Data\Level.cs" />
     <Compile Include="Data\Player.cs" />
+    <Compile Include="Data\PlayerInfo.cs" />
     <Compile Include="Data\PlayerProgress.cs" />
     <Compile Include="Data\Word.cs" />
     <Compile Include="Forms\LoginForm.cs">
@@ -68,6 +69,12 @@
     </Compile>
     <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\RegisterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RegisterForm.Designer.cs">
+      <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201902241453234_init.cs" />
     <Compile Include="Migrations\201902241453234_init.Designer.cs">
@@ -83,6 +90,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RegisterForm.resx">
+      <DependentUpon>RegisterForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902241453234_init.resx">
       <DependentUpon>201902241453234_init.cs</DependentUpon>

@@ -20,21 +20,35 @@ namespace ninetyFourPercent
 
         private void login_btn_Click(object sender, EventArgs e)
         {
-            try
+            /*try
             {
-                var player = context.Players.ToList().Single(r => r.Login == login_tbox.Text);
+                var player = context.Players.ToList().Single(r => r.nickname == login_tbox.Text);
                 if (PasswordManager.VerifyHashedPassword(player.Password, password_tbox.Text))
                 {
-                    this.Close();
+                    PlayerInfo.LOGIN = player.Login;
+                    PlayerInfo.MONEY = player.Money;
+                    PlayerInfo.ID = player.Id;
+
                     MainForm mainForm = new MainForm();
                     mainForm.Show();
                     Hide();
                 }
+                else
+                {
+                    MessageBox.Show("Incorrect password", "Something went wrong :c");
+                }
             }
             catch
             {
-                MessageBox.Show("Player with login " + login_tbox.Text + " doesn't exist", "Something went wrong :c");
-            }
+                MessageBox.Show("User with login " + login_tbox.Text + " doesn't exist", "Something went wrong :c");
+            }*/
+        }
+
+        private void create_acc_label_Click(object sender, EventArgs e)
+        {
+            RegisterForm registerForm = new RegisterForm();
+            registerForm.Show();
+            Hide();
         }
     }
 }
