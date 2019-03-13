@@ -10,6 +10,9 @@ namespace ninetyFourPercent
         GameContext context = new GameContext();
 
         public List<Word> words { get; set; } = null;
+        public List<PlayerProgress> playerprogress { get; set; } = null;
+
+        public List<Word> progress { get; set; } = null;
 
         Button[] buttons;
 
@@ -18,6 +21,8 @@ namespace ninetyFourPercent
         public LevelControl()
         {
             InitializeComponent();
+
+            playerprogress = context.PlayersProgresses.ToList();
         }
 
         public void setLevelTitle(string levelTitle)
@@ -122,6 +127,9 @@ namespace ninetyFourPercent
             {
                 buttons[i].Text = words[i].SecretWord;
                 panel1.Controls.Add(buttons[i]);
+                for (int j = 0; j < playerprogress.Count; j++)
+                    if (buttons[i].Text == playerprogress[j].Word.SecretWord)
+                        buttons[i].ForeColor = Color.Red;
             }
         }
 
@@ -135,6 +143,7 @@ namespace ninetyFourPercent
             if (words != null)
                 words.Clear();
             words = tmp_words;
+
         }
 
         private void button2_Click(object sender, System.EventArgs e)
@@ -142,18 +151,35 @@ namespace ninetyFourPercent
             for (int i = 0; i < buttons.Length; i++)
                 if (textBox1.Text == buttons[i].Text)
                 {
-                    buttons[i].ForeColor = Color.Red;
-
-                    PlayerProgress tmp = new PlayerProgress
+                    if (buttons[i].ForeColor != Color.Red)
                     {
-                        Level_Id = words[0].Level.Id,
-                        Player_Id = context.Players.First(p => p.Id == PlayerInfo.ID).Id,
-                        Word_Id = words.First(w => w.SecretWord.Equals(textBox1.Text)).Id
-                    };
+                        buttons[i].ForeColor = Color.Red;
 
-                    context.PlayersProgresses.Add(tmp);
-                    context.SaveChanges();
+                        PlayerProgress tmp = new PlayerProgress
+                        {
+                            Level_Id = words[0].Level.Id,
+                            Player_Id = context.Players.First(p => p.Id == PlayerInfo.ID).Id,
+                            Word_Id = words.First(w => w.SecretWord.Equals(textBox1.Text)).Id
+                        };
+
+                        context.PlayersProgresses.Add(tmp);
+                        context.SaveChanges();
+                    }
                 }
+        }
+        public void update()
+        {
+            playerprogress = context.PlayersProgresses.ToList();
+            for (int j = 0; j < playerprogress.Count; j++)
+            {
+                context.Entry(playerprogress[j]).Reference(pp => pp.Word).Load();
+                for (int i = 0; i < words.Count; i++)
+                {
+                    if (buttons[i].Text == playerprogress[j].Word.SecretWord)
+                        buttons[i].ForeColor = Color.Red;
+                }
+
+            }
         }
     }
 }

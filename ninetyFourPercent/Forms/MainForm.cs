@@ -87,6 +87,7 @@ namespace ninetyFourPercent
             levelControl1.setWords(words.Where(w => w.Level.Id == themes[0].Id).ToList());
             levelControl1.setLevelTitle(themes[0].Key.ToString());
             levelControl1.createBoard(words.Count(w => w.Level.Id == themes[0].Id));
+            levelControl1.update();
         }
 
         private void button2_Click(object sender, System.EventArgs e)
@@ -97,6 +98,7 @@ namespace ninetyFourPercent
             levelControl1.setWords(words.Where(w => w.Level.Id == themes[1].Id).ToList());
             levelControl1.setLevelTitle(themes[1].Key.ToString());
             levelControl1.createBoard(words.Count(w => w.Level.Id == themes[1].Id));
+            levelControl1.update();
         }
 
         private void button3_Click(object sender, System.EventArgs e)
@@ -107,6 +109,7 @@ namespace ninetyFourPercent
             levelControl1.setWords(words.Where(w => w.Level.Id == themes[2].Id).ToList());
             levelControl1.setLevelTitle(themes[2].Key.ToString());
             levelControl1.createBoard(words.Count(w => w.Level.Id == themes[2].Id));
+            levelControl1.update();
         }
 
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
