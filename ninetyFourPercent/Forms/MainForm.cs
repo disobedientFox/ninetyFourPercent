@@ -6,6 +6,8 @@ namespace ninetyFourPercent
 {
     public partial class MainForm : Form
     {
+        private LevelControl levelControl1 = new LevelControl();
+
         GameContext context = new GameContext();
         public List<Level> levels { get; set; } = null;
         public List<Word> words { get; set; } = null;
@@ -37,6 +39,8 @@ namespace ninetyFourPercent
                 levels = context.Levels.ToList();
             }
             catch { }
+            levelControl1.Size = new System.Drawing.Size(570, 470);
+            mainpanellevel.Controls.Add(levelControl1);
         }
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)

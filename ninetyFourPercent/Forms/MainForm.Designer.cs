@@ -34,7 +34,6 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.levelControl1 = new ninetyFourPercent.LevelControl();
             this.mainpanellevel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,7 +60,6 @@
             this.mainpanellevel.Controls.Add(this.button3);
             this.mainpanellevel.Controls.Add(this.button2);
             this.mainpanellevel.Controls.Add(this.button1);
-            this.mainpanellevel.Controls.Add(this.levelControl1);
             this.mainpanellevel.Location = new System.Drawing.Point(130, 30);
             this.mainpanellevel.Name = "mainpanellevel";
             this.mainpanellevel.Size = new System.Drawing.Size(570, 470);
@@ -97,16 +95,6 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // levelControl1
-            // 
-            this.levelControl1.Font = new System.Drawing.Font("Leelawadee UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.levelControl1.Location = new System.Drawing.Point(0, 0);
-            this.levelControl1.Margin = new System.Windows.Forms.Padding(6);
-            this.levelControl1.Name = "levelControl1";
-            this.levelControl1.Size = new System.Drawing.Size(570, 470);
-            this.levelControl1.TabIndex = 3;
-            this.levelControl1.Visible = false;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 25F);
@@ -134,6 +122,5 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private LevelControl levelControl1;
     }
 }
