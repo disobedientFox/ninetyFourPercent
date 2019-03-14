@@ -14,6 +14,9 @@ namespace ninetyFourPercent
     {
         GameContext context = new GameContext();
 
+        private bool mouseIsDown = false;
+        private Point firstPoint;
+
 
         public RegisterForm()
         {
@@ -59,6 +62,42 @@ namespace ninetyFourPercent
             LoginForm loginForm = new LoginForm();
             loginForm.Show();
             Hide();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void top_panel_MouseDown(object sender, MouseEventArgs e)
+        {
+            firstPoint = e.Location;
+            mouseIsDown = true;
+        }
+
+        private void top_panel_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseIsDown = false;
+        }
+
+        private void top_panel_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseIsDown)
+            {
+                // Get the difference between the two points
+                int xDiff = firstPoint.X - e.Location.X;
+                int yDiff = firstPoint.Y - e.Location.Y;
+
+                // Set the new point
+                int x = this.Location.X - xDiff;
+                int y = this.Location.Y - yDiff;
+                this.Location = new Point(x, y);
+            }
         }
     }
 }

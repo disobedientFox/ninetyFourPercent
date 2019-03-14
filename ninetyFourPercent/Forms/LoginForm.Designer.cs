@@ -80,7 +80,7 @@
             this.create_acc_label.AutoSize = true;
             this.create_acc_label.Font = new System.Drawing.Font("Leelawadee UI", 12F);
             this.create_acc_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(137)))), ((int)(((byte)(85)))));
-            this.create_acc_label.Location = new System.Drawing.Point(524, 451);
+            this.create_acc_label.Location = new System.Drawing.Point(525, 453);
             this.create_acc_label.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.create_acc_label.Name = "create_acc_label";
             this.create_acc_label.Size = new System.Drawing.Size(158, 21);
@@ -152,7 +152,7 @@
             this.password_tbox.PasswordChar = 'o';
             this.password_tbox.PromptChar = '.';
             this.password_tbox.Size = new System.Drawing.Size(149, 29);
-            this.password_tbox.TabIndex = 6;
+            this.password_tbox.TabIndex = 1;
             // 
             // button1
             // 
@@ -167,6 +167,7 @@
             this.button1.Text = "x";
             this.button1.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -177,10 +178,11 @@
             this.button2.Location = new System.Drawing.Point(640, 0);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(30, 30);
-            this.button2.TabIndex = 2;
+            this.button2.TabIndex = 0;
             this.button2.Text = "_";
             this.button2.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // LoginForm
             // 

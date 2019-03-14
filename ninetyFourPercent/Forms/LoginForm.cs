@@ -89,5 +89,15 @@ namespace ninetyFourPercent
                 this.Location = new Point(x, y);
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
     }
 }
