@@ -1,11 +1,17 @@
 ﻿using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Linq;
+using System.Drawing;
+using System.Threading;
 
 namespace ninetyFourPercent
 {
     public partial class MainForm : Form
     {
+
+        private bool mouseIsDown = false;
+        private Point firstPoint;
+
         private LevelControl levelControl1 = new LevelControl();
 
         GameContext context = new GameContext();
@@ -22,11 +28,11 @@ namespace ninetyFourPercent
 
             treeView1.ShowPlusMinus = false;
             treeView1.LabelEdit = false;
-            treeView1.Nodes.Add("First");
-            treeView1.Nodes.Add("Second");
-            treeView1.Nodes.Add("Third");
-            treeView1.Nodes.Add("Fourth");
-            treeView1.Nodes.Add("Fifth");
+            //treeView1.Nodes.Add("First");
+            //treeView1.Nodes.Add("Second");
+            //treeView1.Nodes.Add("Third");
+            //treeView1.Nodes.Add("Fourth");
+            //treeView1.Nodes.Add("Fifth");
 
             try
             {
@@ -85,40 +91,97 @@ namespace ninetyFourPercent
 
         private void button1_Click(object sender, System.EventArgs e)
         {
+            panel1.Visible = true;
+            for (int i = 0; i < 100; i++)
+            {
+                Thread.Sleep(10);
+                progressBar1.Value = i;
+            }
             levelControl1.deleteData();
             levelControl1.Visible = true;
-            levelControl1.BringToFront();
             levelControl1.setWords(words.Where(w => w.Level.Id == themes[0].Id).ToList());
             levelControl1.setLevelTitle(themes[0].Key.ToString());
             levelControl1.createBoard(words.Count(w => w.Level.Id == themes[0].Id));
             levelControl1.update();
+            levelControl1.BringToFront();
+            panel1.Visible = false;
         }
 
         private void button2_Click(object sender, System.EventArgs e)
         {
+            panel1.Visible = true;
+            for (int i = 0; i < 100; i++)
+            {
+                Thread.Sleep(10);
+                progressBar1.Value = i;
+            }
             levelControl1.deleteData();
             levelControl1.Visible = true;
-            levelControl1.BringToFront();
             levelControl1.setWords(words.Where(w => w.Level.Id == themes[1].Id).ToList());
             levelControl1.setLevelTitle(themes[1].Key.ToString());
             levelControl1.createBoard(words.Count(w => w.Level.Id == themes[1].Id));
             levelControl1.update();
+            levelControl1.BringToFront();
+            panel1.Visible = false;
         }
 
         private void button3_Click(object sender, System.EventArgs e)
         {
+            panel1.Visible = true;
+            for (int i = 0; i < 100; i++)
+            {
+                Thread.Sleep(10);
+                progressBar1.Value = i;
+            }
             levelControl1.deleteData();
             levelControl1.Visible = true;
-            levelControl1.BringToFront();
             levelControl1.setWords(words.Where(w => w.Level.Id == themes[2].Id).ToList());
             levelControl1.setLevelTitle(themes[2].Key.ToString());
             levelControl1.createBoard(words.Count(w => w.Level.Id == themes[2].Id));
             levelControl1.update();
+            levelControl1.BringToFront();
+            panel1.Visible = false;
         }
 
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             treeView1_AfterSelect(treeView1, new TreeViewEventArgs(treeView1.SelectedNode));
+        }
+
+        private void top_panel_MouseDown(object sender, MouseEventArgs e)
+        {
+            firstPoint = e.Location;
+            mouseIsDown = true;
+        }
+
+        private void top_panel_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseIsDown)
+            {
+                // Get the difference between the two points
+                int xDiff = firstPoint.X - e.Location.X;
+                int yDiff = firstPoint.Y - e.Location.Y;
+
+                // Set the new point
+                int x = this.Location.X - xDiff;
+                int y = this.Location.Y - yDiff;
+                this.Location = new Point(x, y);
+            }
+        }
+
+        private void top_panel_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseIsDown = false;
+        }
+
+        private void button5_Click(object sender, System.EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void button4_Click(object sender, System.EventArgs e)
+        {
+            Close();
         }
     }
 }

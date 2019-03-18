@@ -16,8 +16,6 @@ namespace ninetyFourPercent
 
         Button[] buttons;
 
-        //List<Button> buttons = new List<Button>();
-
         public LevelControl()
         {
             InitializeComponent();
@@ -32,7 +30,7 @@ namespace ninetyFourPercent
 
         public void createBoard(int wordCount)
         {
-            textBox1.Text = wordCount.ToString();
+            //textBox1.Text = wordCount.ToString();
 
             buttons = new Button[wordCount];
             for (int i = 0; i < wordCount; i++)
@@ -125,17 +123,28 @@ namespace ninetyFourPercent
 
             for (int i = 0; i < wordCount; i++)
             {
-                buttons[i].Text = words[i].SecretWord;
+                buttons[i].Tag = words[i].SecretWord;
+                buttons[i].BackColor = Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(137)))), ((int)(((byte)(85)))));
+                buttons[i].ForeColor = Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(254)))), ((int)(((byte)(248)))));
+                buttons[i].FlatAppearance.BorderSize = 0;
+                buttons[i].FlatStyle = FlatStyle.Flat;
+                buttons[i].Font = new Font("Leelawadee UI", 10F);
+                buttons[i].Text = words[i].Percent.ToString() + "%";
                 panel1.Controls.Add(buttons[i]);
                 for (int j = 0; j < playerprogress.Count; j++)
-                    if (buttons[i].Text == playerprogress[j].Word.SecretWord)
-                        buttons[i].ForeColor = Color.Red;
+                    if (buttons[i].Tag.ToString() == playerprogress[j].Word.SecretWord)
+                    {
+                        buttons[i].Text = buttons[i].Tag.ToString() + " - " + playerprogress[j].Word.Percent.ToString()
+                            + "%";
+                        buttons[i].Font = new Font("Leelawadee UI", 12F, FontStyle.Bold);
+                    }
             }
         }
 
         public void deleteData()
         {
             panel1.Controls.Clear();
+            textBox1.Text = "";
         }
 
         public void setWords(List<Word> tmp_words)
@@ -149,12 +158,11 @@ namespace ninetyFourPercent
         private void button2_Click(object sender, System.EventArgs e)
         {
             for (int i = 0; i < buttons.Length; i++)
-                if (textBox1.Text == buttons[i].Text)
+                if (textBox1.Text == buttons[i].Tag.ToString())
                 {
-                    if (buttons[i].ForeColor != Color.Red)
+                    if (!buttons[i].Text.Contains(" - "))
                     {
-                        buttons[i].ForeColor = Color.Red;
-
+                        buttons[i].Text = textBox1.Text + " - " + words[i].Percent.ToString() + "%";
                         PlayerProgress tmp = new PlayerProgress
                         {
                             Level_Id = words[0].Level.Id,
@@ -164,8 +172,17 @@ namespace ninetyFourPercent
 
                         context.PlayersProgresses.Add(tmp);
                         context.SaveChanges();
+                        textBox1.Text = "";
+                        return;
+                    }else
+                    {
+                        MessageBox.Show("This word is already on the table", "Nope");
+                        textBox1.Text = "";
+                        return;
                     }
                 }
+            MessageBox.Show("It's not even close, man", "Nope");
+            textBox1.Text = "";
         }
         public void update()
         {
@@ -176,7 +193,10 @@ namespace ninetyFourPercent
                 for (int i = 0; i < words.Count; i++)
                 {
                     if (buttons[i].Text == playerprogress[j].Word.SecretWord)
-                        buttons[i].ForeColor = Color.Red;
+                    {
+                        buttons[i].ForeColor = Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(254)))), ((int)(((byte)(248)))));
+                        buttons[i].Font = new Font("Leelawadee UI", 12F, FontStyle.Bold);
+                    }
                 }
 
             }
