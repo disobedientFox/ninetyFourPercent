@@ -201,5 +201,12 @@ namespace ninetyFourPercent
 
             }
         }
+
+        public void setPicture(int pic)
+        {
+            pictureBox.BringToFront();
+            button1.SendToBack();
+            pictureBox.Image = Image.FromFile(@"..\..\Pictures\Picture" + pic.ToString() + ".jpg");
+        }
     }
 }

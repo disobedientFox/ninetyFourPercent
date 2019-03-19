@@ -28,11 +28,6 @@ namespace ninetyFourPercent
 
             treeView1.ShowPlusMinus = false;
             treeView1.LabelEdit = false;
-            //treeView1.Nodes.Add("First");
-            //treeView1.Nodes.Add("Second");
-            //treeView1.Nodes.Add("Third");
-            //treeView1.Nodes.Add("Fourth");
-            //treeView1.Nodes.Add("Fifth");
 
             try
             {
@@ -140,6 +135,7 @@ namespace ninetyFourPercent
             levelControl1.createBoard(words.Count(w => w.Level.Id == themes[2].Id));
             levelControl1.update();
             levelControl1.BringToFront();
+            levelControl1.setPicture(treeView1.SelectedNode.Index + 1);
             panel1.Visible = false;
         }
 
